@@ -1,0 +1,16 @@
+extends layout
+block content
+    div.uk-grid.uk-height-1-1
+        br
+        br
+        iframe#stats_content.uk-width-1-1(onload="resizeStats(this)")
+
+block postscript
+    script.
+        $(document).ready( function() {
+            $("#stats_content").attr("src", "statistics/#{statdir}/index.html");
+        });
+
+        function resizeStats(iframe) {
+            iframe.height = iframe.contentWindow.document.body.scrollHeight + "px";
+        }
