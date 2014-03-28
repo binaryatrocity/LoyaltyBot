@@ -18,3 +18,7 @@
 .uk-search-field, .uk-search-field::-moz-placeholder {
     color: #FFFFFF;
 }
+
+#fan-art > a {
+    margin: 8px;
+}

@@ -1,0 +1,32 @@
+extends layout
+block content
+    div.uk-grid
+        br
+        br
+        div.uk-width-1-1.uk-text-center
+            h1 Potato Fan Art
+        div.uk-width-1-1
+            div#fan-art.uk-panel.uk-panel-box
+
+block postscript
+    script.
+        var art = [
+            {
+                url: "https://pbs.twimg.com/media/BjxJdEFCcAAO15X.png:large",
+                user: "Hraugur",
+                user_link: "https://twitter.com/Hraugur"
+            },
+            {
+                url: "https://pbs.twimg.com/media/BjxJdEFCcAAO15X.png:large",
+                user: "Hraugur",
+                user_link: "https://twitter.com/Hraugur"
+            },
+        ];
+
+        var $holder = $(".uk-panel-box"); 
+        art.forEach(function(elem) {
+            var $thumb = $("<a href='"+elem.url+"' class='uk-thumbnail uk-thumbnail-small'></a>");
+            $thumb.append("<img src='"+elem.url+"' />");
+            $thumb.append("<div class='uk-thumbnail-caption'>Artist: <a href='"+elem.user_link+"'>"+elem.user+"</a></div>");
+            $holder.append($thumb);
+        });
