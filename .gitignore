@@ -181,3 +181,13 @@ KarmaBot.js
 Knowledge_Bot.js
 WizardBot.js
 XBucksBot.js
+
+#me me me
+shaneomad.js
+pyrionflax.js
+testbot.js
+*.png
+web/public/browserconfig.xml
+node_modules/.bin
+web/public/favicon.ico
+web/public/statistics
