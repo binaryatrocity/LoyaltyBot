@@ -8,6 +8,27 @@ block content
                 h2 #{title} is  
                     span#status offline.
                 div#streambox
+                br
+                div#betstats
+                    span.uk-text-bold Betting is currently:
+                    #{bet_status}
+                    if bet_status === true
+                        span.uk-text-bold.uk-text-success &nbsp;Active
+                    else
+                        span.uk-text-bold.uk-text-danger &nbsp;Inactive
+                    if bet_board
+                        table.uk-table
+                            caption Current Betting Pool
+                            thead
+                                tr
+                                    th Option
+                                    th Total
+                            tbody
+                                each option in bet_board
+                                    tr
+                                        td !#{option.name}
+                                        td #{option.total}
+                    br
         div.uk-width-1-2
             div.uk-panel.uk-panel-box
                 table.uk-table.uk-table-hover.uk-table-striped
@@ -33,6 +54,7 @@ block postscript
                     $("#streambox").append("<br/><br/><img src='"+data.stream.preview.medium+"' />");;
                 } else { 
                     $("#streambox").append("<h3 class='uk-text-danger'>Offline</h3>");
+                    $("#betstats").hide();
                 }
             });
         });
