@@ -8,19 +8,7 @@ html(lang="en")
         script(src='/lib/uikit/js/uikit.min.js')
 
         // Favicon stuff
-        link(rel='apple-touch-icon', sizes='57x57', href='/apple-touch-icon-57x57.png')
-        link(rel='apple-touch-icon', sizes='114x114', href='/apple-touch-icon-114x114.png')
-        link(rel='apple-touch-icon', sizes='72x72', href='/apple-touch-icon-72x72.png')
-        link(rel='apple-touch-icon', sizes='144x144', href='/apple-touch-icon-144x144.png')
-        link(rel='apple-touch-icon', sizes='60x60', href='/apple-touch-icon-60x60.png')
-        link(rel='apple-touch-icon', sizes='120x120', href='/apple-touch-icon-120x120.png')
-        link(rel='apple-touch-icon', sizes='76x76', href='/apple-touch-icon-76x76.png')
-        link(rel='apple-touch-icon', sizes='152x152', href='/apple-touch-icon-152x152.png')
-        link(rel='icon', type='image/png', href='/favicon-196x196.png', sizes='196x196')
-        link(rel='icon', type='image/png', href='/favicon-160x160.png', sizes='160x160')
-        link(rel='icon', type='image/png', href='/favicon-96x96.png', sizes='96x96')
-        link(rel='icon', type='image/png', href='/favicon-16x16.png', sizes='16x16')
-        link(rel='icon', type='image/png', href='/favicon-32x32.png', sizes='32x32')
+        link(rel='icon', type='image/png', href='/favicon.ico', sizes='32x32')
         meta(name='msapplication-TileColor', content='#da532c')
         meta(name='msapplication-TileImage', content='/mstile-144x144.png')
 
@@ -29,12 +17,12 @@ html(lang="en")
             div.uk-width-1-1
                 div.uk-grid
                     div.uk-width-1-4
-                        img(src='/img/#{logo}')
+                        img(src='/img/#{logo}', style='max-height:180px;')
                     div.uk-width-2-4
                         // bigimagelogo
                         h1.uk-text-center #{title}<br/>#{slogan}
                     div.uk-width-1-4
-                        img.flip.uk-float-right(src='/img/#{logo}')
+                        img.flip.uk-float-right(src='/img/#{logo}', style='max-height:180px;')
             div.uk-width-1-1
                 nav.uk-navbar
                     ul.uk-navbar-nav.uk-navbar-center
@@ -43,16 +31,31 @@ html(lang="en")
                         li: a(href='/ladder') Ladder
                         li: a(href='/stats') Chat Stats
                         li: a(href='/fanart') Fan Art
-                        li: a(href='http://www.twitter.com/#{twitter}'): img(src='/img/twitter.gif', alt='Twitter')
+                        li: a(href='http://www.twitter.com/#{twitter}'): img(src='/img/twitter.png', alt='Twitter')
             div.uk-width-1-1
                 div.uk-container.uk-container-center
                     block content
             div.uk-width-1-1
                 footer.uk-text-center
                     br
-                    span.tag Visit the potato lord @ 
-                    a(href='http://www.twitch.tv/shaneomad') Shaneomad
+                    span.tag Visit the #{ucfirst(currency)} Lord @ 
+                    a(href='http://www.twitch.tv/#{title}') #{title} 
                     br
-                    span.copyright Potatr (c) DotaNoobs 2014
-        
+                    span.copyright &nbsp;&copy; DotaNoobs & #{title}. All rights reserved.
+
         block postscript
+
+    script.
+        $(document).ready(function() {
+            $('span.copyright').prepend(new Date().getFullYear());
+        });
+    script.
+        window._idl = {};
+        _idl.variant = "modal";
+        (function() {
+            var idl = document.createElement('script');
+            idl.type = 'text/javascript';
+            idl.async = true;
+            idl.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'members.internetdefenseleague.org/include/?url=' + (_idl.url || '') + '&campaign=' + (_idl.campaign || '') + '&variant=' + (_idl.variant || 'modal');
+            document.getElementsByTagName('body')[0].appendChild(idl);
+        })();

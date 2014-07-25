@@ -10,22 +10,47 @@ block content
                         input(class='uk-search-field', type='search', placeholder='Search...')
                         button(class='uk-close', type='reset')
                 table.uk-table.uk-table-hover.uk-table-striped
-                    caption Potato Farmer Ladder Rankings
+                    caption #{ucfirst(currency)} Farmer Ladder Rankings (<span id="total_farmers"></span> farmers total)
                     thead
                         tr
                             th Rank
                             th Viewer
-                            th Potatoes
+                            th #{ucfirst(currency)}
                     tbody
             ul.uk-pagination
 
 block postscript
     script.
         var perPage = 20,
-            data = !{JSON.stringify(rows)};
+            data = !{JSON.stringify(rows)},
+            lastPage = Math.ceil(data.length/perPage);
+
+        function minifyPagination() {
+            var current = parseInt($('li.uk-active').attr('page')),
+                min = Math.max(current-3, 1),
+                max = current+3;
+
+            $('#page_first, #page_last').remove();
+
+            $('ul.uk-pagination > li').addClass('uk-hidden');
+            for(var x = min; x <= max; x++) {
+                $('li#'+x).removeClass('uk-hidden');
+            }
+
+            if (min > 1) 
+                $('li#'+min).before("<button id='page_first' class='uk-button'>&lt;&lt;</button>");
+            if (max < lastPage)
+                $('li#'+max).after("<button id='page_last' class='uk-button'>&gt;&gt;</button>");
+
+            $('#page_first').click(function(){
+                $('li#'+1).click();
+            });
+            $('#page_last').click(function(){
+                $('li#'+lastPage).click();
+            });
+        };
 
         $(document).ready(function(){
-
             // Live search of the ladder listings
             $('.uk-search-field').keyup(function() {
                 var query = $(this).val();
@@ -44,8 +69,8 @@ block postscript
             });
 
             // Create pagination buttons
-            for(var i = 1; i <= Math.ceil(data.length/perPage); i++) { 
-                var button = $('<li page='+i+'></li>').append('<a>'+i+'</a>');
+            for(var i = 1; i <= lastPage; i++) { 
+                var button = $('<li page='+i+' id='+i+'></li>').append('<a>'+i+'</a>');
                 button.on('click', function(){
                     //get page
                     var z = $(this).attr('page');
@@ -62,7 +87,7 @@ block postscript
                         b = perPage*z;
                         
                     data.slice(a, b).forEach(function(element, index, array){
-                        $('table > tbody').append($('<tr></tr>').append('<td>'+(a+index+1)+'</td><td>'+element.user+'</td><td>'+element.points+'</td>'));
+                        $('table > tbody').append($('<tr></tr>').append('<td>'+(Number(a+index+1).toLocaleString('en'))+'</td><td>'+element.user+'</td><td>'+element.points+'</td>'));
                     });
                 });
 
@@ -76,4 +101,13 @@ block postscript
 
             // Show the first page when we load up
             $('ul.uk-pagination > li').first().click();
+
+            minifyPagination();
+
+            $('ul.uk-pagination > li').on('click', function(){
+                minifyPagination();
+            });
+
+            $('#total_farmers').append(Number(data.length).toLocaleString('en'));
+
         });

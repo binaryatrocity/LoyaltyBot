@@ -1,0 +1,31 @@
+TwitchBot Commands List
+=======================
+
+Public Commands:
+!<currency>                             Displays how many <currency> you have
+!bid <amount>                           Bid <amount> <currency> on the  current auction
+!ticket <amount>                        Buy <amount> tickets for the current raffle
+!<option> <amount>                      Used for voting and betting
+!<bot_name>                             List of available custom commands
+!<currency> bet pool                    Display current betting pool
+!<currency> vote pool                   Display current vote standings
+
+Mod only commands:
+!<currency> (on/off)                    Enables or disables currency requests
+!<currency> auction open                Opens a new auction
+!<currency> auction close               Closes the auction and announces winner
+!<currency> auction cancel              Cancels auction, returns <currency> to users
+!<currency> raffle open <price> <max>   Opens a raffle, tickets cost <price>, users can buy a max of <max> tickets
+!<currency> raffle close/cancel         Same as auction functions
+!<currency> raffle draw                 Draws a second ticket (second place or need a new winner)
+
+!<currency> bet open (opt1 opt2 etc)    Opens a bet with options !opt1 !opt2 (can have up to 10)
+!<currency> bet close                   Stop accepting new bets
+!<currency> bet cancel                  Cancel bet, give <currency> back to users
+!<currency> bet winner (opt1)           Makes (!opt1) the winner, pays out to users
+
+!<currency> vote open (opt1 opt2 etc)   Opens a vote with options !opt1 !opt2 (can have up to 10)
+!<currency> vote close                  Stop accepting new votes
+!<currency> vote cancel                 Cancel vote, give <currency> back to users
+!<currency> vote winner (opt1)          Makes (!opt1) the winner (will make this calculate the winner soon)
+

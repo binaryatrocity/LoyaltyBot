@@ -1,9 +1,6 @@
 extends layout
 block content
-    div.uk-grid.uk-height-1-1
-        br
-        br
-        iframe#stats_content.uk-width-1-1(onload="resizeStats(this)")
+    iframe#stats_content.uk-width-1-1(onload="resizeStats(this)")
 
 block postscript
     script.
@@ -13,4 +10,5 @@ block postscript
 
         function resizeStats(iframe) {
             iframe.height = iframe.contentWindow.document.body.scrollHeight + "px";
+            $('div.uk-container.uk-container-center').attr("style", "max-width: 100%!important; padding: 15px 5px;");
         }

@@ -186,7 +186,9 @@ XBucksBot.js
 shaneomad.js
 pyrionflax.js
 testbot.js
+2gd.js
 *.png
+*.jpg
 web/public/browserconfig.xml
 node_modules/.bin
 web/public/favicon.ico
