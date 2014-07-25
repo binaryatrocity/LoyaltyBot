@@ -16,9 +16,33 @@ loyaltybot.initialize({
         user     : 'mysql_user',
         password : 'mysql_password',
         database : 'mysql_database',
-        website  : 'http://www.loyaltypoints.com'
+        website  : 'http://www.loyaltypoints.com',
+        modpowers: true, // NEW
+        sub_ty_msg: 'SUBHYPE', // NEW
+    },
+    web: {
+        port:   8000,
+        slogan: 'WEBSITE SLOGAN HERE',
+        logo: 'logo.jpg',
+        twitter: 'example',
+        chatlog: false,
+        statdir: 'example',
+        fanart: [
+            {
+                url: "https://imageurl.com/image.png",
+                user: "Author",
+                user_link: "http://authorurl.com"
+            },
+            {
+                url: "https://imageurl.com/image.png",
+                user: "Author",
+                user_link: "http://authorurl.com"
+            },
+        ],
     },
 
     // optional features
-    commands: true
+    commands: true,
+    exchanges: {'option_name':8001, 'gdollars':8002},
+    ignorelist: ['jtv', 'bot_potato', 'moobot']
 });

@@ -15,11 +15,14 @@ opposed to the viewers that just stop by for a quick giveaway and leave.
 ####Features
 
 - Fully functioning auction and raffle systems
+- Betting and voting systems in place
 - Double loyalty points for subscribers/loyal viewers
 
 ####Extras
 
 - Moderator commands (currently in development, semi functional)
+- Web frontend
+- Currency exchange between bots
 
 ####Future Features/Extras
 
@@ -50,11 +53,35 @@ loyaltybot.initialize({
         user     : 'mysql_user',
         password : 'mysql_password',
         database : 'mysql_database',
-        website  : 'http://www.loyaltypoints.com'
+        website  : 'http://www.loyaltypoints.com',
+        modpowers: true, // NEW
+        sub_ty_msg: 'SUBHYPE', // NEW
+    },
+    web: {
+        port:   8000,
+        slogan: 'WEBSITE SLOGAN HERE',
+        logo: 'logo.jpg',
+        twitter: 'example',
+        chatlog: false,
+        statdir: 'example',
+        fanart: [
+            {
+                url: "https://imageurl.com/image.png",
+                user: "Author",
+                user_link: "http://authorurl.com"
+            },
+            {
+                url: "https://imageurl.com/image.png",
+                user: "Author",
+                user_link: "http://authorurl.com"
+            },
+        ],
     },
 
     // optional features
-    commands: true
+    commands: true,
+    exchanges: {'option_name':8001, 'gdollars':8002},
+    ignorelist: ['jtv', 'bot_potato', 'moobot']
 });
 ````
 
@@ -76,10 +103,14 @@ Currency
 - ````password````: password for the mysql database
 - ````database````: mysql database name
 - ````website````: provides loyalty bot with an offsite location for checking currency. can also be and be an empty ````string````
+- ````modpowers````: let moderators use streamer-only commands? (boolean true/false)
+- ````sub_ty_msg````: message to print when new subscription is detected
 
 Optional
 
 - ````commands````: enable/disable the ability to use moderator commands. boolean: accepts ````true```` or ````false````
+- ````exchanges````: set ports for other bots, allows currency exchange between
+- ````gnorelist````: usernames to ignore,  remove bot and things like moobot from the hiscore list
 
 Preparing to Setup Your Channel's Bot
 -------------------------------------
@@ -129,15 +160,3 @@ Viewer
 Commands
 - Table Name: ````commands````
 - Field Names: ````id```` [primary key, autoincrement, not null, integer], ````command```` [not null, text], ````text```` [not null, longtext], ````auth```` [default: 1, integer]
-
-LoyaltyBot In Action
---------------------
-
-ArcherBot - [Chiffre2435](http://www.twitch.tv/chiffre2435)  
-CookieMonsterBot - [Minerva_dh](http://www.twitch.tv/minerva_dh)  
-InternetBot - [Izlsnizzt](http://www.twitch.tv/izlsnizzt)  
-KarmaBot - [itsfabiotime](http://www.twitch.tv/itsfabiotime)  
-Knowledge_Bot - [Illicitmedia](http://www.twitch.tv/illicitmedia)  
-XBucksBot - [Linexnick](http://www.twitch.tv/linexnick)  
-
-If you're using LoyaltyBot send me a [twitch message](http://www.twitch.tv/message/compose?to=rvca18) so I can add you to this list!
