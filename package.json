@@ -1,0 +1,30 @@
+{
+  "name": "TwitchBot",
+  "version": "0.3.9",
+  "description": "A TwitchTV viewer reward system",
+  "main": "./users/example.js",
+  "dependencies": {
+    "express": "~4.2.0",
+    "jade": "^1.1.5",
+    "mysql": "^2.0.0-alpha5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "./users/example.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/binaryatrocity/TwitchBot.git"
+  },
+  "keywords": [
+    "twitch",
+    "IRC",
+    "bot"
+  ],
+  "author": "binaryatrocity",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/binaryatrocity/TwitchBot/issues"
+  },
+  "homepage": "https://github.com/binaryatrocity/TwitchBot"
+}
